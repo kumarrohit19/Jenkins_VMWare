@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    parameters {
+        text(name: 'VM_LIST', description: 'Enter VM names (one per line)')
+        choice(name: 'ACTION', choices: ['CREATE','DELETE'], description: 'Snapshot Action')
+        string(name: 'SNAPSHOT_NAME', defaultValue: 'JenkinsSnapshot', description: 'Snapshot Name')
+    }
+
+    environment {
+        VCENTER = "indprdvc01.mylab.local"
+    }
+
+    stages {
+
+        stage('Run Snapshot Job') {
+
+            steps {
+
+                withCredentials([usernamePassword(credentialsId: 'vcenter-creds', usernameVariable: 'VC_USER', passwordVariable: 'VC_PASS')]) {
+
+                    powershell """
+                    D:\\Jenkins\\VMWare_Automation\\scripts\\vm_snapshot.ps1 `
+                    -vcenter ${VCENTER} `
+                    -vmList "${params.VM_LIST}" `
+                    -action ${params.ACTION} `
+                    -snapshotName ${params.SNAPSHOT_NAME}
+                    """
+
+                }
+
+            }
+        }
+    }
+}

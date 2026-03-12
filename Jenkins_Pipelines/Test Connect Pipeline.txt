@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Test vCenter Connection') {
+            steps {
+                powershell '''
+                Connect-VIServer indprdvc01.mylab.local
+                Get-VM | Select Name
+                '''
+            }
+        }
+    }
+}
