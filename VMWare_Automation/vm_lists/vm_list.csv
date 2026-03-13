@@ -1,0 +1,5 @@
+VM_NAME,CPU,MEMORY_GB,DISK_GB,DATASTORE,CLUSTER,NETWORK,TEMPLATE
+web01,1,0.64,1, vsanDatastore,vSAN_Cluster, Data_Traffic,Tinu_Linux
+web02,1,0.64,1, vsanDatastore,vSAN_Cluster, Data_Traffic,Tinu_Linux
+app01,1,0.64,1, vsanDatastore,vSAN_Cluster, Data_Traffic,Tinu_Linux
+db01,2,1,2, vsanDatastore,vSAN_Cluster, Data_Traffic,Tinu_Linux
