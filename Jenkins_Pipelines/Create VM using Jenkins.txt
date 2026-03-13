@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+
+    parameters {
+
+        string(name: 'VM_NAME', description: 'VM Name')
+        string(name: 'TEMPLATE_NAME', description: 'Template Name', defaultValue: 'Tinu_Linux')
+        string(name: 'CPU', defaultValue: '1')
+        string(name: 'MEMORY_GB', defaultValue: '0.64')
+        string(name: 'DISK_GB', defaultValue: '1')
+        string(name: 'DATASTORE', description: 'Datastore', defaultValue: 'vsanDatastore')
+        string(name: 'CLUSTER', description: 'Cluster Name', defaultValue: 'vSAN_Cluster')
+        string(name: 'NETWORK', description: 'Portgroup', defaultValue: 'Data_Traffic')
+        
+    }
+
+    environment {
+        VCENTER = "indprdvc01.mylab.local"
+    }
+
+    stages {
+
+        stage('Deploy VM') {
+
+            steps {
+
+                withCredentials([usernamePassword(credentialsId: 'vcenter-creds', usernameVariable: 'VC_USER', passwordVariable: 'VC_PASS')]) {
+
+                    powershell """
+
+                    D:\\Jenkins\\VMWare_Automation\\scripts\\Create_VM_Template_Tiny_linux.ps1 `
+                    -vcenter ${VCENTER} `
+                    -vmname ${params.VM_NAME} `
+                    -template ${params.TEMPLATE_NAME} `
+                    -cpu ${params.CPU} `
+                    -memory ${params.MEMORY_GB} `
+                    -disk ${params.DISK_GB} `
+                    -datastore ${params.DATASTORE} `
+                    -cluster ${params.CLUSTER} `
+                    -network ${params.NETWORK}
+                    
+                    """
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

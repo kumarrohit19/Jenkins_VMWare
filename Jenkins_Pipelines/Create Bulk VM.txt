@@ -1,0 +1,33 @@
+pipeline {
+
+    agent any
+
+    environment {
+        VCENTER = "indprdvc01.mylab.local"
+    }
+
+    stages {
+
+        stage('Deploy Bulk VMs') {
+
+            steps {
+
+                withCredentials([usernamePassword(credentialsId: 'vcenter-creds', usernameVariable: 'VC_USER', passwordVariable: 'VC_PASS')]) {
+
+                    powershell """
+
+                    D:\\Jenkins\\VMWare_Automation\\scripts\\Create_Bulk_Linux_VM.ps1 `
+                    -vcenter ${VCENTER} `
+                    -csvFile "D:\\Jenkins\\VMWare_Automation\\vm_lists\\vm_list.csv"
+
+                    """
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
