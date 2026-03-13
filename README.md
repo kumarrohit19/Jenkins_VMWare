@@ -12,4 +12,21 @@ Steps to follow:
 4. copy the vmware_automation folder on your system, and make the configuration changes for logging the vcenter.
 5. create one service account and provide below permissions to perform the jon in vcenter
    (Virtual Machine & Assign Virtual Machine to Resource Pool)
-7. Run the jobs
+6. Run the jobs
+
+Here are some Images for reference:
+
+Dashboard
+![alt text](Images/Dashboard.png)
+
+Permissions required in vCenter:
+Need to provide permission under Resources
+![alt text](Images/Resource.png)
+
+Need Virtual Machine Management Permission
+![alt text](Images/Virtual_machine.png)
+
+Need to Assign this custom created permission to service account
+![alt text](Images/Service_Account.png)
+
+
