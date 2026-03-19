@@ -17,7 +17,7 @@ Steps to follow:
 Here are some Images for reference:
 
 Service Account Created in Active Directory
-![alt text](Images/Service_Account.png)
+![alt text](Images/Service_Account_in_AD.png)
 
 Added Service Account in Jenkins for performing VMware Operations
 ![alt text](Images/Credentials.png)
