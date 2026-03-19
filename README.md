@@ -10,11 +10,17 @@ Steps to follow:
 2. Create a pipeline job
 3. Paste the codes mentioned in Jenkins_Pipelines folder.
 4. copy the vmware_automation folder on your system, and make the configuration changes for logging the vcenter.
-5. create one service account and provide below permissions to perform the jon in vcenter
+5. create one service account and provide below permissions to perform the job in vcenter
    (Virtual Machine & Assign Virtual Machine to Resource Pool)
 6. Run the jobs
 
 Here are some Images for reference:
+
+Service Account Created in Active Directory
+![alt text](Images/Service_Account.png)
+
+Added Service Account in Jenkins for performing VMware Operations
+![alt text](Images/Credentials.png)
 
 Dashboard
 ![alt text](Images/Dashboard.png)
