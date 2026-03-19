@@ -33,6 +33,6 @@ Need Virtual Machine Management Permission
 ![alt text](Images/Virtual_machine.png)
 
 Need to Assign this custom created permission to service account
-![alt text](Images/Service_Account.png)
+![alt text](Images/Add_Service_Account_in_Vmware.png)
 
 
